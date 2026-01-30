@@ -1,0 +1,17 @@
+name: Catalogue DB Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          cd db
+          docker build -t 739561048503.dkr.ecr.us-east-1.amazonaws.com/catalogue-db-image .
+        name: Docker Build
+      - run: docker push 739561048503.dkr.ecr.us-east-1.amazonaws.com/catalogue-db-image
+        name: Docker push
+
